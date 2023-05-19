@@ -48,7 +48,7 @@ export const Header = styled.div`
     justify-content: flex-end;
     background-color: transparent;
     gap: 26px;
-    width: 100vw;
+    width: 100%;
     height: 80px;
     position: fixed;
     top: 0;
