@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    gap: 40px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 `
 
 export const ContentContainer = styled.div`
@@ -26,7 +29,6 @@ export const FormContainer = styled.div`
 
     input {
         width: 100%;
-        /* max-width: 600px; */
         height: 45px;
         border-radius: 12px;
         font-size: 14px;
@@ -55,8 +57,7 @@ export const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: transparent;
-    background-color: red;
+    background-color: white;
     gap: 26px;
     width: 100vw;
     height: 80px;

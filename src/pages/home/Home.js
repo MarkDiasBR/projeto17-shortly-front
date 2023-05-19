@@ -29,6 +29,14 @@ export default function Home() {
                 <LinkTile />
                 <LinkTile />
                 <LinkTile />
+                <LinkTile />
+                <LinkTile />
+                <LinkTile />
+                <LinkTile />
+                <LinkTile />
+                <LinkTile />
+                <LinkTile />
+                <LinkTile />
             </ContentContainer>
         </Container>
     )
