@@ -5,9 +5,9 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    gap: 50px;
+    gap: 30px;
     margin-top: 80px;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 `
 
 export const ContentContainer = styled.div`
@@ -51,8 +51,8 @@ export const Header = styled.div`
     font-weight: 400;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: white;
+    justify-content: flex-end;
+    background-color: transparent;
     gap: 26px;
     width: 100%;
     height: 80px;
@@ -60,21 +60,13 @@ export const Header = styled.div`
     top: 0;
     right: 0;
     padding-right: 40px;
-    padding-left: 40px;
 
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 26px;
-    }
-
-    & > div > a {
+    & > a {
         color: #9C9C9C;
         text-decoration: none;
     }
 
-    & div > p, & > p {
+    & > p {
         color: #5D9040;
     }
 `

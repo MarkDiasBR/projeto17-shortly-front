@@ -6,6 +6,9 @@ export default function SignIn() {
     return (
         <Container>
             <Header>
+                <Link to="/ranking-not-signed-in">
+                    <p>Ranking</p>
+                </Link>
                 <p>Entrar</p>
                 <Link to="/sign-up">
                     <p>Cadastre-se</p>
