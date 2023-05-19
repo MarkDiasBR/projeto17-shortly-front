@@ -53,7 +53,7 @@ export const Header = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    margin-right: 40px;
+    padding-right: 40px;
 
     & > a {
         color: #9C9C9C;

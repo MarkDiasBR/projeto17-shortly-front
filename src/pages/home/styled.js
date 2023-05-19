@@ -8,17 +8,27 @@ export const Container = styled.div`
     justify-content: space-evenly;
 `
 
-export const FormContainer = styled.div`
+export const ContentContainer = styled.div`
+    width: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 26px;
+`
+
+export const FormContainer = styled.div`
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
 
     input {
-        width: 600px;
+        width: 100%;
+        /* max-width: 600px; */
         height: 45px;
         border-radius: 12px;
-        margin-bottom: 18px;
         font-size: 14px;
         font-weight: 400;
         padding: 13px;
@@ -28,10 +38,9 @@ export const FormContainer = styled.div`
     }
 
     button {
-        width: 130px;
+        width: 180px;
         height: 45px;
         border-radius: 12px;
-        margin-top: 10px;
         font-weight: 700;
         color: #FFF;
         background-color: #5D9040;
@@ -45,8 +54,9 @@ export const Header = styled.div`
     font-weight: 400;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: transparent;
+    background-color: red;
     gap: 26px;
     width: 100vw;
     height: 80px;
@@ -54,13 +64,21 @@ export const Header = styled.div`
     top: 0;
     right: 0;
     padding-right: 40px;
+    padding-left: 40px;
 
-    & > a {
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 26px;
+    }
+
+    & > div > a {
         color: #9C9C9C;
         text-decoration: none;
     }
 
-    & > p {
+    & div > p, & > p {
         color: #5D9040;
     }
 `
