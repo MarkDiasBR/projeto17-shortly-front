@@ -22,7 +22,7 @@ export default function Home() {
             <Logo />
             <FormContainer id="signup-form">
                 <input placeholder="Links que cabem no bolso" />
-                <button for="signup-form" type="submit">Encurtar link</button>
+                <button htmlFor="signup-form" type="submit">Encurtar link</button>
             </FormContainer>            
             <ContentContainer>
                 <LinkTile />
