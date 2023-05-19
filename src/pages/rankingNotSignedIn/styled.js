@@ -43,6 +43,15 @@ export const TitleContainer = styled.div`
         font-size: 36px;
         color: #000000;
     }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #000000;
+    }
 `
 
 export const Header = styled.div`

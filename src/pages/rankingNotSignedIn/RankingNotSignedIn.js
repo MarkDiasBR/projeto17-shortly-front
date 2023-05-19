@@ -38,9 +38,11 @@ export default function RankingNotSignedIn() {
                 </p>
             </ContentContainer>
             <TitleContainer>
-                <p>
-                    Crie sua conta para usar nosso serviço!
-                </p>
+                <Link to="/sign-up">
+                    <p>
+                        Crie sua conta para usar nosso serviço!
+                    </p>
+                </Link>
             </TitleContainer>
         </Container>
     )
