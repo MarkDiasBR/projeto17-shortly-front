@@ -14,7 +14,8 @@ import axios from 'axios';
 export async function signUp(form) {
     try {
         console.log(form)
-        await axios.post(`${process.env.REACT_APP_API_URL}/signup`, form)
+        const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, form)
+        console.log(promise.data)
     } catch (err) {
         console.log(err.response.data)
     }

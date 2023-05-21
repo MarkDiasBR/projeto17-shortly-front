@@ -10,8 +10,14 @@ export default function Home() {
                 <p>Seja bem-vindo(a), $USER!</p>
                 <div>
                     <p>Home</p>
+                    <Link >
+                        <p>Links</p>
+                    </Link>
                     <Link to="/ranking">
                         <p>Ranking</p>
+                    </Link>
+                    <Link >
+                        <p>Descobrir</p>
                     </Link>
                     <Link >
                         <p>Sair</p>

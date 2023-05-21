@@ -8,6 +8,9 @@ export default function RankingNotSignedIn() {
         <Container>
             <Header>
                 <p>Ranking</p>
+                <Link >
+                    <p>Descobrir</p>
+                </Link>
                 <Link to="/sign-in">
                     <p>Entrar</p>
                 </Link>

@@ -17,6 +17,9 @@ export default function SignIn() {
                 <Link to="/ranking-not-signed-in">
                     <p>Ranking</p>
                 </Link>
+                <Link >
+                    <p>Descobrir</p>
+                </Link>
                 <p>Entrar</p>
                 <Link to="/sign-up">
                     <p>Cadastre-se</p>

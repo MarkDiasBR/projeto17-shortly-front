@@ -50,6 +50,9 @@ export default function SignUp() {
                         Ranking
                     </p>
                 </Link>
+                <Link >
+                    <p>Descobrir</p>
+                </Link>
                 <Link to="/sign-in">
                     <p>
                         Entrar

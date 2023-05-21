@@ -11,9 +11,15 @@ export default function Ranking() {
                 <p>Seja bem-vindo(a), $USER!</p>
                 <div>
                     <Link to="/">
-                    <p>Home</p>
+                        <p>Home</p>
+                    </Link>
+                    <Link >
+                        <p>Links</p>
                     </Link>
                     <p>Ranking</p>
+                    <Link >
+                        <p>Descobrir</p>
+                    </Link>
                     <Link >
                         <p>Sair</p>
                     </Link>
