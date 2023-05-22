@@ -1,44 +1,40 @@
 import { Header, Container, FormContainer } from "./styled.js";
 import Logo from "../../assets/Logo.js";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signUp } from "../../services/serverRequisitions.js";
 
 export default function SignUp() {
-    const [form, setForm] = useState({email: "", name: "", password: "" });
-    const [disabledInput, setDisabledInput] = useState(false)
+    const [form, setForm] = useState({ email: "", name: "", password: "", confirmPassword: "" });
+    const [disabledInput, setDisabledInput] = useState(false);
   
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    async function handleForm(event) {
-        const {name, value} = event.target
-    
-        const passwordConfirm = document.querySelector("#pass2-signin");
-        if (passwordConfirm.value !== document.querySelector("#pass1-signin").value) {
-          passwordConfirm.setCustomValidity('Senhas não conferem.');
-        } else {
-          passwordConfirm.setCustomValidity('');
-        }
-        
-        const newForm = {...form, [name]: value};
-        setForm(newForm)
-    
-        console.log(newForm)
+    const password = useRef();
+    const confirmPassword = useRef();
+    if (password.current?.value!==confirmPassword.current?.value) {
+        confirmPassword.current?.setCustomValidity('Senhas não conferem.');
+    } else {
+        confirmPassword.current?.setCustomValidity('');
+    }
+
+    function handleForm(event) {
+        const {name, value} = event.target;
+
+        setForm({...form, [name]: value});    
     }
     
     async function handleSubmit(event) {
-        event.preventDefault()
-        
-        console.log("submit")
+        event.preventDefault();
     
-        setDisabledInput(true)
-    
-        try {
-          await signUp(form)
-          navigate("/") 
-        } catch (err) {
-          console.log(err.response.data)
-          setDisabledInput(false)
+        setDisabledInput(true);
+
+        const signupPromise = await signUp(form);
+
+        setDisabledInput(signupPromise.proceed);
+
+        if (signupPromise.proceed) {
+            navigate("/sign-in")
         }
     }
 
@@ -65,6 +61,7 @@ export default function SignUp() {
                 <input 
                     name="name"
                     type="text"
+                    autoComplete="on"
                     placeholder="Nome" 
                     onChange={handleForm}
                     disabled={disabledInput}
@@ -73,30 +70,31 @@ export default function SignUp() {
                 <input 
                     name="email"
                     type="email"
+                    autoComplete="on"
                     placeholder="E-mail" 
                     onChange={handleForm} 
                     disabled={disabledInput} 
                     required  
                 />
-                <input 
-                    id="pass1-signin"
+                <input
+                    ref={password}
                     name="password"
                     type="password"
-                    autoComplete="new-password"
+                    autoComplete="on"
                     placeholder="Senha" 
                     onChange={handleForm} 
                     disabled={disabledInput}
-                    required 
+                    required
                 />
                 <input 
-                    id="pass2-signin"
+                    ref={confirmPassword}
                     name="confirmPassword"
                     type="password"
-                    autoComplete="new-password"
+                    autoComplete="on"
                     placeholder="Confirmar senha" 
                     onChange={handleForm} 
                     disabled={disabledInput} 
-                    required 
+                    required
                 />
                 <button 
                     type="submit"

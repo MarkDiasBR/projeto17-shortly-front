@@ -13,19 +13,26 @@ import axios from 'axios';
 
 export async function signUp(form) {
     try {
-        console.log(form)
-        const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, form)
-        console.log(promise.data)
+        const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, form);
+        console.log(promise.data);
+        promise.proceed = true;
+        return promise;
     } catch (err) {
         console.log(err.response.data)
+        err.response.proceed = false;
+        return err.response;
     }
 }
 
 export async function signIn(form) {
     try {
-        const promise = await axios.post(`${process.env.REACT_APP_API_URL}/sign-in`, form)
-        return promise.data;
+        const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signin`, form);
+        console.log(promise.data);
+        promise.proceed = true;
+        return promise;
     } catch (err) {
-        console.log(err.response.data)
+        console.log(err.response.data);
+        err.response.proceed = false;
+        return err.response;
     }
 }
