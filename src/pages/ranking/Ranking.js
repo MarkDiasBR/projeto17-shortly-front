@@ -1,14 +1,18 @@
-import { Header, Container, ContentContainer, TitleContainer } from "./styled.js";
+import { Header, Container, TitleContainer } from "./styled.js";
 import Logo from "../../assets/Logo.js";
 import { Link } from "react-router-dom/dist/index.js";
 import Trophy from "../../assets/Trophy.js";
 import RankingStats from "../../components/rankingStats/RankingStats.js";
+import { logout } from "../../services/serverRequisitions.user.js";
 
 export default function Ranking() {
+
+    const name = localStorage.getItem("name");
+
     return (
         <Container>
             <Header>   
-                <p>Seja bem-vindo(a), $USER!</p>
+                <p>Seja bem-vindo(a), {name}!</p>
                 <div>
                     <Link to="/">
                         <p>Home</p>
@@ -20,7 +24,7 @@ export default function Ranking() {
                     <Link >
                         <p>Descobrir</p>
                     </Link>
-                    <Link >
+                    <Link onClick={logout} to="/sign-in">
                         <p>Sair</p>
                     </Link>
                 </div>
@@ -31,7 +35,7 @@ export default function Ranking() {
                 <p>Ranking</p>
             </TitleContainer>            
             <RankingStats />
-            <ContentContainer>
+            {/* <ContentContainer>
                 <p>
                     <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
                 </p>
@@ -47,7 +51,7 @@ export default function Ranking() {
                 <p>
                     <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
                 </p>
-            </ContentContainer>
+            </ContentContainer> */}
         </Container>
     )
 }

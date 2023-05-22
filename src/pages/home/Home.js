@@ -1,13 +1,17 @@
 import { Header, Container, ContentContainer, FormContainer } from "./styled.js";
 import Logo from "../../assets/Logo.js";
-import { Link } from "react-router-dom/dist/index.js";
+import { Link } from "react-router-dom";
 import LinkTile from "../../components/linkTile/LinkTile.js";
+import { logout } from "../../services/serverRequisitions.user.js";
 
 export default function Home() {
+
+    const name = localStorage.getItem("name");
+
     return (
         <Container>
             <Header>   
-                <p>Seja bem-vindo(a), $USER!</p>
+                <p>Seja bem-vindo(a), {name}!</p>
                 <div>
                     <p>Home</p>
                     <Link >
@@ -19,7 +23,7 @@ export default function Home() {
                     <Link >
                         <p>Descobrir</p>
                     </Link>
-                    <Link >
+                    <Link onClick={logout} to="/sign-in">
                         <p>Sair</p>
                     </Link>
                 </div>

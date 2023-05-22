@@ -11,11 +11,11 @@ export default function RankingNotSignedIn() {
                 <Link >
                     <p>Descobrir</p>
                 </Link>
-                <Link to="/sign-in">
-                    <p>Entrar</p>
-                </Link>
                 <Link to="/sign-up">
                     <p>Cadastre-se</p>
+                </Link>
+                <Link to="/sign-in">
+                    <p>Entrar</p>
                 </Link>
             </Header>   
             <Logo />

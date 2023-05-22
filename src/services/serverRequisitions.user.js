@@ -27,6 +27,9 @@ export async function signUp(form) {
 export async function signIn(form) {
     try {
         const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signin`, form);
+
+        JSON.stringify(localStorage.setItem("token", promise.data.token));
+
         console.log(promise.data);
         promise.proceed = true;
         return promise;
@@ -35,4 +38,8 @@ export async function signIn(form) {
         err.response.proceed = false;
         return err.response;
     }
+}
+
+export function logout() {
+    localStorage.clear();
 }

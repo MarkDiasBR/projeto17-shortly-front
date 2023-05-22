@@ -1,8 +1,8 @@
 import { Header, Container, FormContainer } from "./styled.js";
 import Logo from "../../assets/Logo.js";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { signIn } from "../../services/serverRequisitions.js";
+import { useState } from "react";
+import { signIn } from "../../services/serverRequisitions.user.js";
 
 export default function SignIn() {
     const [form, setForm] = useState({email: "", password: "" });
@@ -38,10 +38,10 @@ export default function SignIn() {
                 <Link >
                     <p>Descobrir</p>
                 </Link>
-                <p>Entrar</p>
                 <Link to="/sign-up">
                     <p>Cadastre-se</p>
                 </Link>
+                <p>Entrar</p>
             </Header>
             <Logo />
             <FormContainer onSubmit={handleSubmit}>

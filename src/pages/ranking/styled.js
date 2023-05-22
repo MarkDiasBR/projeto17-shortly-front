@@ -10,7 +10,7 @@ export const Container = styled.div`
     margin-bottom: 80px;
 `
 
-export const ContentContainer = styled.div`
+/* export const ContentContainer = styled.div`
     width: 900px;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ export const ContentContainer = styled.div`
             font-weight: 500;
         }
     }
-`
+` */
 
 export const TitleContainer = styled.div`
     display: flex;
