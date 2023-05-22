@@ -13,7 +13,8 @@ export const Container = styled.div`
     
     box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
 
-    & > div {
+    /* & > div { */
+    & > a {
         padding-left: 13px;
         padding-right: 13px;
         border-radius: 12px 0 0 12px;
@@ -23,9 +24,13 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
+        text-decoration:  none;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 2px #000000;
     }
 
-    & div > div:first-child {
+    /* & div > div:first-child { */
+    & a > div:first-child {
         width: 40%;
         overflow: hidden;
 

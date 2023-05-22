@@ -43,3 +43,14 @@ export async function signIn(form) {
 export function logout() {
     localStorage.clear();
 }
+
+export async function getRedirected(shortUrl) {
+    console.log('jekiti')
+    try {
+        const promise = await axios.get(`${process.env.REACT_APP_API_URL}/urls/open/${shortUrl}`);
+        console.log("promise",promise)
+        return promise;
+    } catch (err) {
+        console.log(err.response)
+    }
+}

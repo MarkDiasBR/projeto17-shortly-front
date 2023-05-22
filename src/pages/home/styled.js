@@ -18,7 +18,7 @@ export const ContentContainer = styled.div`
     gap: 26px;
 `
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
     width: 900px;
     display: flex;
     align-items: center;

@@ -33,3 +33,23 @@ export async function getUserData(config) {
         console.log(err.response.data)
     }
 }
+
+export async function shortenUrl(body) {
+    try {
+        const promise = await axios.post(`${process.env.REACT_APP_API_URL}/urls/shorten`, body, config);
+        return promise;
+    } catch (err) {
+        console.log(err.response.data)
+        return err.response;
+    }
+}
+
+export async function getAllLinks() {
+    try {
+        const promise = await axios.get(`${process.env.REACT_APP_API_URL}/users/me`, config);
+        return promise.data.shortenedUrls;
+    } catch (err) {
+        console.log(err.response.data)
+        return err.response;
+    }
+}

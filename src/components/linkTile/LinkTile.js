@@ -1,24 +1,25 @@
-import Trash from "../../assets/Trash.js"
-import { Container } from "./styled.js"
-
+import Trash from "../../assets/Trash.js";
+// import { getRedirected } from "../../services/serverRequisitions.user.js";
+import { Container } from "./styled.js";
+import { Link } from "react-router-dom";
 // { url, shortenedUrl, clicks }
 
-export default function LinkTile() {
+export default function LinkTile({url, shortUrl, visitCount}) {
     return (
         <Container>
-            <div>
+            <Link to={`${process.env.REACT_APP_API_URL}/u/${shortUrl}`}>
                 <div>
-                    <p>https://www.driven.com.br</p>
+                    <p>{url}</p>
                 </div>
                 <div>
-                    <p>dni29m</p>
+                    <p>{shortUrl}</p>
                 </div>
                 <div>
                     <p>
-                    Quantidade de visitantes: 123456789
+                    Quantidade de visitantes: {visitCount}
                     </p>
                 </div>
-            </div>
+            </Link>
             <button>
                 <Trash />
             </button>
