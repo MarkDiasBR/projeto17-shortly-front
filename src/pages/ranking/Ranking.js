@@ -35,23 +35,6 @@ export default function Ranking() {
                 <p>Ranking</p>
             </TitleContainer>            
             <RankingStats />
-            {/* <ContentContainer>
-                <p>
-                    <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
-                </p>
-                <p>
-                    <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
-                </p>
-                <p>
-                    <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
-                </p>
-                <p>
-                    <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
-                </p>
-                <p>
-                    <span>5. DEFINITIVAMENTE_NAO_E_UM_BOT</span> - 12345252 links - 37.707 visualizações                    
-                </p>
-            </ContentContainer> */}
         </Container>
     )
 }

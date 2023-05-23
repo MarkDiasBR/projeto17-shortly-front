@@ -14,7 +14,7 @@ import axios from 'axios';
 export async function signUp(form) {
     try {
         const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, form);
-        console.log(promise.data);
+
         promise.proceed = true;
         return promise;
     } catch (err) {
@@ -27,14 +27,12 @@ export async function signUp(form) {
 export async function signIn(form) {
     try {
         const promise = await axios.post(`${process.env.REACT_APP_API_URL}/signin`, form);
-
-        JSON.stringify(localStorage.setItem("token", promise.data.token));
-
-        console.log(promise.data);
+        localStorage.setItem("token", promise.data.token);
+        
         promise.proceed = true;
         return promise;
     } catch (err) {
-        console.log(err.response.data);
+        console.log(err);
         err.response.proceed = false;
         return err.response;
     }
@@ -45,12 +43,20 @@ export function logout() {
 }
 
 export async function getRedirected(shortUrl) {
-    console.log('jekiti')
     try {
         const promise = await axios.get(`${process.env.REACT_APP_API_URL}/urls/open/${shortUrl}`);
-        console.log("promise",promise)
-        return promise;
+        return promise.data.url;
     } catch (err) {
-        console.log(err.response)
+        console.error(err);
+        throw new Error(err);
+    }
+}
+
+export async function getRanking() {
+    try {
+        const ranking = await axios.get(`${process.env.REACT_APP_API_URL}/ranking`);
+        return ranking.data;
+    } catch (err) {
+        console.error(err);
     }
 }

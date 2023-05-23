@@ -8,11 +8,17 @@ export default function Auth({ children }) {
     useEffect(() => {
         const asyncWrapper = async () => {
             try {
-                const token = localStorage.getItem("token");
-                const config = { "headers": {"Authorization": `Bearer ${token}`} };
+                // const token = localStorage.getItem("token");
 
-                const userData = await getUserData(config);
+                // if (!token) {
+                // throw new Error("Token not found");
+                // }
 
+                // const config = { headers: { Authorization: `Bearer ${token}` } };
+                const userData = await getUserData();
+                // const userData = await getUserData(config);
+
+                // console.log("returns:",userData)
                 const { name, id: userId } = userData;
 
                 localStorage.setItem("name", name);
@@ -25,10 +31,9 @@ export default function Auth({ children }) {
                 setIsLoading(false);
             }
         };
-    
-        asyncWrapper();
-    }, []);
 
+        asyncWrapper();
+    }, [isAuthenticated, isLoading]);
 
     if (isLoading) {
         // Show loading spinner or component while verifying the token
@@ -40,9 +45,5 @@ export default function Auth({ children }) {
         return <div>Unauthorized access!</div>;
     }
 
-    return (
-        <>
-            {children}
-        </>
-    )
+    return <>{children}</>;
 }

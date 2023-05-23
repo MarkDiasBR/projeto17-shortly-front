@@ -3,33 +3,32 @@ import Logo from "../../assets/Logo.js";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LinkTile from "../../components/linkTile/LinkTile.js";
-import { logout } from "../../services/serverRequisitions.user.js";
-import { shortenUrl } from "../../services/serverRequisitions.auth.js";
-import { getAllLinks } from "../../services/serverRequisitions.auth.js";
+import { logout, getRedirected } from "../../services/serverRequisitions.user.js";
+import { shortenUrl, getAllLinks, deleteLink, getUserName } from "../../services/serverRequisitions.auth.js";
 
 export default function Home() {
     const [form, setForm] = useState({url: ''});
     const [disabledInput, setDisabledInput] = useState(false);
     const [shortenedUrls, setShortenedUrls] = useState([]);
+    const [name, setName] = useState('');
+    console.log("braaaap")
 
-    const name = localStorage.getItem("name");
-    
     useEffect(() => {
         const asyncWrapper = async () => {
-            
+                
             try {
+                const namePromise = await getUserName();
+                setName(namePromise)
+
                 const links = await getAllLinks();
-                console.log(links)
                 setShortenedUrls(links);
             } catch (error) {
                 console.log('erro')
             }
         }
-    
+
         asyncWrapper();
     }, [])
-    
-    
 
     function handleForm(event) {
         const {name, value} = event.target;
@@ -47,16 +46,41 @@ export default function Home() {
         await shortenUrl(form);
 
         const links = await getAllLinks();
-        // console.log(links)
         setShortenedUrls(links);
 
         setDisabledInput(false);
     }
 
+    async function handleClick(event, shortUrl) {
+        event.preventDefault();
+
+        try {
+            const url = await getRedirected(shortUrl);
+            window.open(url, '_blank');
+
+        } catch (err) {
+            console.error(err);
+        } finally {
+            const links = await getAllLinks();
+            setShortenedUrls(links);
+        }
+    }
+
+    async function handleDelete(id) {
+        try {
+            await deleteLink(id);
+        } catch (err) {
+            console.error(err)
+        } finally {
+            const links = await getAllLinks();
+            setShortenedUrls(links);
+        }
+    }
+
     return (
         <Container>
             <Header>   
-                <p>Seja bem-vindo(a), {name}!</p>
+                <p>Seja bem-vindo(a){name ? `, ${name}!` : ''}</p>
                 <div>
                     <p>Home</p>
                     <Link >
@@ -91,9 +115,12 @@ export default function Home() {
                 {shortenedUrls ? shortenedUrls.map(elem => (
                     <LinkTile
                         key={elem.id}
+                        id={elem.id}
                         url={elem.url}
                         shortUrl={elem.shortUrl}
                         visitCount={elem.visitCount}
+                        handleClick={handleClick}
+                        handleDelete={handleDelete}
                     />
                 )) : ''}
             </ContentContainer>
