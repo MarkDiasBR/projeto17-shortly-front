@@ -12,8 +12,8 @@ export default function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/user/open/:shortUrl" render={() => <RedirectComponent to={`${process.env.REACT_APP_API_URL}/user/open/:shortUrl`} />} />
-          <Route path="/u/:shortUrl" render={() => <RedirectComponent to={`${process.env.REACT_APP_API_URL}/u/:shortUrl`} />} />
+          <Route path="/user/open/:shortUrl" render={(match) => <RedirectComponent to={`${process.env.REACT_APP_API_URL}/user/open/${match.params.shortUrl}`} />} />
+          <Route path="/u/:shortUrl" render={(match) => <RedirectComponent to={`${process.env.REACT_APP_API_URL}/u/${match.params.shortUrl}`} />} />
           <Route path="/user/open/:shortUrl" to={`${process.env.REACT_APP_API_URL}/user/open/:shortUrl`}/>
           <Route path="/u/:shortUrl" to={`${process.env.REACT_APP_API_URL}/u/:shortUrl`}/>
           <Route path="/sign-up" element={<SignUp />} />
